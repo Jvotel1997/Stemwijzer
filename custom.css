@@ -1,3 +1,19 @@
-#{
+.selected{
+  background-color: #01B4DC;
+}
 
+#statements-wrapper {
+  display: none
+}
+
+#multiplier-wrapper {
+  display: none
+}
+
+#party-settings-wrapper {
+  display: none
+}
+
+#result-wrapper {
+  display: none
 }

@@ -1,46 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/custom.css">
 	<meta charset="UTF-8">
 	<title>Stemwijzer Tweede Kamer 2017</title>
+	<link rel="stylesheet" href="custom.css">
 </head>
 <body>
-<div id="intro">
-	<div class="introtext">
-		<p>StemWijzer Tweede Kamer 2017</p>
-		<div>
-			<h2>Test uw politieke voorkeur aan de hand van 30 stellingen</h2>
-			<p>
-				<button id="start">Start</button>
-				<a href="#">Bekijk de toegankelijke versie voor mensen met een visuele beperking</a>
-			</p>
-			<a href="#">De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</a>
-		</div>
-		<div>
-			<h2>
-				<a href="#">
-					<img src="#" alt="">
-				</a>
-			</h2>
-			<p>
-				Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?
-			</p>		
+<main>
+	<div id="intro-wrapper">
+		<div class="introtext">
+			<p>StemWijzer Tweede Kamer 2017</p>
+			<div>
+				<h2>Test uw politieke voorkeur aan de hand van 30 stellingen</h2>
+				<p>
+					<button id="start" onclick="start()">Start</button>
+				</p>
+			</div>
 		</div>
 	</div>
-	<div class="parties">
-		<div class="logos">
+	<div id="statements-wrapper">
+		<button onclick="goToPreviousStatement()">&#8678;</button>
+		<div id="statement-container">
+			<h1 id="statement-title"></h1>
+			<p id="statement-description"></p>
 		</div>
-		<h3>Deze partijen doen mee</h3>
+		<div>
+			<button id="proButton" onclick="goToNextStatement('pro')">Eens</button>
+			<button id="ambivalentButton" onclick="goToNextStatement('ambivalent')">Geen van beide</button>
+			<button id="contraButton" onclick="goToNextStatement('contra')">Oneens</button>
+			<button id="skipButton" onclick="goToNextStatement('skip')">Sla deze vraag over</button>
+		</div>
+		<details>
+			<summary>
+				Wat vinden de partijen?
+			</summary>
+			<div class=opinions>
+				<div id="opinion-agree">
+					<h3>Eens</h3>
+					<div id="opinion-agree-list"></div>
+				</div>
+				<div id="opinion-neither">
+					<h3>Geen van beide</h3>
+					<div id="opinion-neither-list"></div>
+				</div>
+				<div id="opinion-disagree">
+					<h3>Oneens</h3>
+					<div id="opinion-disagree-list"></div>
+				</div>
+			</div>
+		</details>
+	</div>
+
+<div id="multiplier-wrapper">
+		<button onclick="goToSettingSelection()">Ga verder</button>
+	<div id="multiplier-wrapper-subjects">
 	</div>
 </div>
-<div id="statements">
-	<p>Test</p>
-	<p>Test</p>
-	<p>Test</p>
-	<p>Test</p>
-	<p>Test</p>
+
+<div id="party-settings-wrapper">
+	<button onclick="finish()">Afronden</button>
+	<h2>Kies de partijen die u mee wilt nemen in het resultaat</h2>
+		<button onclick="toggleAllParties(1)">Selecteer alles</button>
+		<button onclick="toggleAllParties(2)">Selecteer zittende partijen</button>
+		<button onclick="toggleAllParties(3)">Selecteer seculiere partijen</button>
+		<button onclick="toggleAllParties(0)">Verwijder selectie</button>
+	<div id="party-settings-subjects">
+	</div>
 </div>
+
+<div id="result-wrapper">
+	<h1>Uw mening komt het best overeen met:</h1>
+	<ul id="result-content">
+
+	</ul>
+</div>
+</main>
 
 <script src="js/data.js"></script>
 <script src="js/custom.js"></script>
